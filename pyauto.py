@@ -1,4 +1,3 @@
-from this import d
 import pyautogui as auto
 from time import sleep
 
@@ -17,8 +16,9 @@ sleep(3)
 # Screen Size
 # print(auto.size())
 # print(auto.position())
-  
-#auto.moveTo(200, 200)
+#auto.displayMousePosition()
+
+# auto.moveTo(200, 200)
  
 # Move mouse in square form
 # auto.moveRel(200, 0, .2)
@@ -69,8 +69,10 @@ auto.mouseUp()
 # ===========================================
 # Spiral exercise
 
-x = 0; y = 0
-print(auto.position())
+# print(auto.position())
+# exit()
+# x = 0; y = 0
+# print(auto.position())
 
 # Clear workspace
 auto.leftClick(115, 110, 0, .5)
@@ -78,10 +80,12 @@ sleep(.3)
 auto.leftClick(70, 180, 0, .3)
 auto.leftClick(220, 180, 0, .3)
 sleep(.5)
+auto.moveTo(60,200, .5)
 auto.mouseDown(button='left')
-auto.moveTo(60,250, .5)
-auto.moveTo(650,650, .5)
+auto.moveTo(600,670, .5)
+sleep(.5)
 auto.mouseUp()
+auto.typewrite(['delete'])
 sleep(.5)
 
 # Select pen
@@ -89,17 +93,15 @@ auto.doubleClick(230, 120, .3, 'left', .5)
 sleep(.5)
 
 # Start Drawing
-auto.moveTo(400,400)
+auto.moveTo(340,420, .5)
 sleep(1)
 auto.mouseDown(button='left')
-for i in range(0,20):
-    x += 10
-    auto.moveRel(x, 0, .2)
-    y += 10
-    auto.moveRel(0, y, .2)
-    x *= -1
-    y *= -1
-    
-    
-
+x, y = auto.position()
+i = 0
+while(y >= 220 and y <= 650):
+    x, y = auto.position()
+    i += 1
+    n = (i*10)*-1 if (i % 2) == 0 else i*10
+    auto.moveRel(n, 0, .2)
+    auto.moveRel(0, n, .2)
 auto.mouseUp()
